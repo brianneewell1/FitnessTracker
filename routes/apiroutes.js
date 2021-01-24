@@ -1,10 +1,10 @@
-//const router = require("express").Router();
+const router = require("express").Router();
 const db = require("../models");
 const Workout = require("../models/workout");
 
 module.exports = function(app) {
  //gets information for workouts page
-    app.get("/api/workouts", (req, res) => {
+    router.get("/api/workouts", (req, res) => {
         db.Workout.find({}).then(dbWorkout => {
             res.json(dbWorkout);
         })
@@ -13,7 +13,7 @@ module.exports = function(app) {
         });
     })
    //range page
-    app.get("/api/workouts/range", ({}, res) => {
+    router.get("/api/workouts/range", ({}, res) => {
       db.Workout.find({}).then((dbWorkout) => {
         res.json(dbWorkout);
       }).catch(err => {
@@ -21,7 +21,7 @@ module.exports = function(app) {
       });
     });
     //create new workouts
-    app.post("/api/workouts/", (req, res) => {
+    router.post("/api/workouts/", (req, res) => {
         db.Workout.create(req.body).then((dbWorkout) => {
           res.json(dbWorkout);
         }).catch(err => {
@@ -40,4 +40,4 @@ module.exports = function(app) {
     });
 };
 
-//module.exports = router
+module.exports = router
