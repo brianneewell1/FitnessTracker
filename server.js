@@ -4,8 +4,6 @@ const mongoose = require("mongoose");
 //add seed file in//
 require("./Develop/seeders/seed");
 
-const appUrl = "mongodb://localhost/workout";
-
 const PORT = process.env.PORT || 3001;
 
 const app = express();
@@ -16,7 +14,9 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(express.static("public"));
 
-mongoose.connect( process.env.MONGODB_URI || appUrl  , {
+mongoose.connect( 
+  process.env.MONGODB_URI || 'mongodb://localhost/fitness_db', 
+  {
   useNewUrlParser: true,
   useUnifiedTopology:true,
   useCreateIndex: true,
