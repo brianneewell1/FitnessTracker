@@ -11,9 +11,11 @@ app.use(express.json());
 
 app.use(express.static('public'));
 
-mongoose.connect(process.env.MONGODB_URI || 'mongodb+srv://Il0vecasey:Il0vecasey@cluster0.7hoz7.mongodb.net/fitness_db?retryWrites=true&w=majority', {
+mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost/workout', {
   useNewUrlParser: true,
-  useFindAndModify: false
+  useFindAndModify: false,
+  useUnifiedTopology: true,
+  useCreateIndex: true
 });
 
 
